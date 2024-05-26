@@ -7,6 +7,7 @@ import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
 import RecentTransactions from "@/components/RecentTransactions";
 
 const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
+  const currentPage = Number(page as string) || 1;
   const loggedIn = await getLoggedInUser();
   const accounts = await getAccounts({ userId: loggedIn.$id });
 
@@ -34,7 +35,12 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
           totalBanks={accounts?.totalBanks}
           totalCurrentBalance={accounts?.totalCurrentBalance}
         />
-        <RecentTransactions />
+        <RecentTransactions
+          accounts={accountsData}
+          transactions={account?.transactions}
+          appwriteItemId={appwriteItemId}
+          page={currentPage}
+        />
       </div>
       <RightSidebar
         user={loggedIn}
