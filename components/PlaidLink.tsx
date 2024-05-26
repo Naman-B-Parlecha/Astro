@@ -10,9 +10,11 @@ import {
   createLinkToken,
   exchangePublicToken,
 } from "@/lib/actions/user.actions";
+
 const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
   const router = useRouter();
   const [token, setToken] = useState("");
+
   useEffect(() => {
     const getLinkToken = async () => {
       const data = await createLinkToken(user);
@@ -20,6 +22,7 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
     };
     getLinkToken();
   }, [user]);
+  
   const onSuccess = useCallback<PlaidLinkOnSuccess>(
     async (public_token: string) => {
       await exchangePublicToken({ publicToken: public_token, user });
