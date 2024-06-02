@@ -15,6 +15,7 @@ import { sidebarLinks } from "@/constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Footer from "./Footer";
+import PlaidLink from "./PlaidLink";
 
 const MobileNav = ({ user }: MobileNavProps) => {
   const pathname = usePathname();
@@ -37,7 +38,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
           >
             <Image src="/icons/logo.svg" width={34} height={34} alt="logo" />
             <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">
-              Horizon
+              Astro
             </h1>
           </Link>
           <div className="mobilenav-sheet">
@@ -74,6 +75,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                     </Link>
                   );
                 })}
+                <PlaidLink user={user}/>
                 USER DATA
               </nav>
             </SheetClose>
