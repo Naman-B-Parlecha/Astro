@@ -96,7 +96,7 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
       sameSite: "strict",
       secure: true,
     });
-
+    
     return parseStringify(newUser);
   } catch (error) {
     console.error('Error', error);
